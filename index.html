@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lic. Delfina Hussen · Psicóloga</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --primary-dark:  #19233a;
+      --secondary-dark:#1e2e50;
+      --tertiary:      #324878;
+      --blue-light:    #8eb4e3;
+      --blue-xlight:   #d8e1f3;
+      --cream:         #faf9f5;
+      --beige:         #e1ded7;
+      --mauve:         #bd99a6;
+      --white:         #FFFFFF;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--primary-dark);
+      overflow-x: hidden;
+    }
+
+    /* ── HERO ────────────────────────────────────── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 120px 48px 80px;
+      position: relative;
+      overflow: hidden;
+      max-width: 860px;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -200px; right: -200px;
+      width: 700px; height: 700px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(142,180,227,.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-text { position: relative; z-index: 1; }
+    .hero-tag {
+      display: inline-block;
+      font-size: .75rem;
+      font-weight: 500;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--tertiary);
+      margin-bottom: 20px;
+      padding: 6px 16px;
+      border: 1px solid var(--blue-xlight);
+      border-radius: 40px;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.8rem, 5vw, 4.2rem);
+      line-height: 1.12;
+      color: var(--primary-dark);
+      margin-bottom: 28px;
+    }
+    .hero h1 em {
+      font-style: italic;
+      color: var(--mauve);
+    }
+    .hero-desc {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: var(--tertiary);
+      max-width: 560px;
+      margin-bottom: 44px;
+    }
+    .hero-btns {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--secondary-dark);
+      color: var(--cream);
+      padding: 16px 32px;
+      border-radius: 50px;
+      font-size: .9rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: background .2s, transform .2s;
+    }
+    .btn-primary:hover { background: var(--primary-dark); transform: translateY(-2px); }
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: transparent;
+      color: var(--secondary-dark);
+      padding: 16px 32px;
+      border-radius: 50px;
+      border: 1.5px solid var(--blue-xlight);
+      font-size: .9rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: border-color .2s, background .2s, transform .2s;
+    }
+    .btn-secondary:hover { border-color: var(--blue-light); background: var(--blue-xlight); transform: translateY(-2px); }
+
+    /* ── SECTION SHARED ─────────────────────────── */
+    section { padding: 100px 48px; }
+    .section-label {
+      font-size: .72rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--tertiary);
+      font-weight: 500;
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      color: var(--primary-dark);
+      line-height: 1.2;
+      margin-bottom: 20px;
+    }
+    .section-title em { font-style: italic; color: var(--mauve); }
+    .section-subtitle {
+      font-size: 1rem;
+      line-height: 1.8;
+      color: var(--tertiary);
+      max-width: 560px;
+    }
+
+    /* ── ABOUT ───────────────────────────────────── */
+    #sobre-mi {
+      background: var(--white);
+    }
+    .about-text p {
+      font-size: 1rem;
+      line-height: 1.85;
+      color: var(--tertiary);
+      margin-bottom: 20px;
+    }
+    .about-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 32px;
+    }
+    .tag {
+      background: var(--blue-xlight);
+      border: 1px solid var(--blue-light);
+      color: var(--secondary-dark);
+      font-size: .8rem;
+      font-weight: 500;
+      padding: 8px 18px;
+      border-radius: 40px;
+    }
+
+    /* ── APPROACH ────────────────────────────────── */
+    #enfoque {
+      background: var(--cream);
+    }
+    .approach-header {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+    .approach-header .section-subtitle { margin: 0 auto; }
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+    .card {
+      background: var(--white);
+      border-radius: 24px;
+      padding: 36px 32px;
+      border: 1px solid var(--beige);
+      transition: transform .25s, box-shadow .25s;
+    }
+    .card:hover { transform: translateY(-6px); box-shadow: 0 16px 48px rgba(25,35,58,.08); }
+    .card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+      margin-bottom: 12px;
+    }
+    .card p {
+      font-size: .9rem;
+      line-height: 1.75;
+      color: var(--tertiary);
+    }
+
+    /* ── MODALIDADES ─────────────────────────────── */
+    #modalidades {
+      background: var(--secondary-dark);
+      color: var(--cream);
+    }
+    #modalidades .section-label { color: var(--blue-light); }
+    #modalidades .section-title { color: var(--cream); }
+    #modalidades .section-subtitle { color: rgba(216,225,243,.7); }
+    .modality-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 56px;
+    }
+    .modality-card {
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 24px;
+      padding: 40px 36px;
+      transition: background .2s, transform .2s;
+    }
+    .modality-card:hover { background: rgba(255,255,255,.1); transform: translateY(-4px); }
+    .modality-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      color: var(--cream);
+      margin-bottom: 12px;
+    }
+    .modality-card p {
+      font-size: .92rem;
+      line-height: 1.75;
+      color: rgba(216,225,243,.65);
+      margin-bottom: 20px;
+    }
+    .modality-tag {
+      display: inline-block;
+      background: rgba(255,255,255,.1);
+      color: var(--blue-xlight);
+      font-size: .75rem;
+      font-weight: 500;
+      letter-spacing: .08em;
+      padding: 6px 14px;
+      border-radius: 40px;
+      text-transform: uppercase;
+    }
+
+    /* ── CONSULTAS ───────────────────────────────── */
+    #consultas {
+      background: var(--cream);
+    }
+    .consultas-inner {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .consultas-info {}
+    .steps { margin-top: 40px; display: flex; flex-direction: column; gap: 28px; }
+    .step { display: flex; gap: 20px; align-items: flex-start; }
+    .step-num {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      background: var(--blue-xlight);
+      border: 1.5px solid var(--blue-light);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      color: var(--secondary-dark);
+      flex-shrink: 0;
+    }
+    .step-text h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      color: var(--primary-dark);
+      margin-bottom: 6px;
+    }
+    .step-text p { font-size: .88rem; line-height: 1.7; color: var(--tertiary); }
+    .form-container {
+      background: var(--white);
+      border-radius: 28px;
+      border: 1px solid var(--beige);
+      overflow: hidden;
+      box-shadow: 0 8px 40px rgba(25,35,58,.07);
+    }
+    .form-header {
+      background: var(--secondary-dark);
+      padding: 28px 32px;
+      color: var(--cream);
+    }
+    .form-header h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      margin-bottom: 4px;
+    }
+    .form-header p { font-size: .85rem; opacity: .75; }
+    .form-container iframe {
+      width: 100%;
+      border: none;
+      display: block;
+    }
+
+    /* ── FAQ ─────────────────────────────────────── */
+    #faq {
+      background: var(--white);
+    }
+    .faq-inner {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .faq-list { display: flex; flex-direction: column; gap: 12px; }
+    .faq-item {
+      border: 1px solid var(--beige);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+    .faq-question {
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 20px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+      font-size: .95rem;
+      font-weight: 500;
+      color: var(--primary-dark);
+      text-align: left;
+      transition: background .2s;
+    }
+    .faq-question:hover { background: var(--cream); }
+    .faq-question .arrow {
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      background: var(--blue-xlight);
+      display: flex; align-items: center; justify-content: center;
+      transition: transform .3s, background .2s;
+      flex-shrink: 0;
+    }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .35s ease, padding .35s;
+      font-size: .9rem;
+      line-height: 1.8;
+      color: var(--tertiary);
+      padding: 0 24px;
+    }
+    .faq-item.open .faq-answer { max-height: 400px; padding: 0 24px 20px; }
+    .faq-item.open .arrow { transform: rotate(180deg); background: var(--blue-light); }
+    .faq-answer a { color: var(--tertiary); }
+
+    /* ── CONTACT STRIP ───────────────────────────── */
+    #contacto {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--secondary-dark) 100%);
+      padding: 80px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    .contact-text h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      color: var(--cream);
+      margin-bottom: 12px;
+    }
+    .contact-text p { font-size: 1rem; color: rgba(216,225,243,.65); max-width: 440px; line-height: 1.7; }
+    .contact-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+    .btn-light {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: var(--cream);
+      color: var(--primary-dark);
+      padding: 16px 32px;
+      border-radius: 50px;
+      font-size: .9rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: background .2s, transform .2s;
+    }
+    .btn-light:hover { background: var(--blue-xlight); transform: translateY(-2px); }
+    .btn-outline-light {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: transparent;
+      color: var(--cream);
+      padding: 16px 32px;
+      border-radius: 50px;
+      border: 1.5px solid rgba(255,255,255,.25);
+      font-size: .9rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: border-color .2s, background .2s, transform .2s;
+    }
+    .btn-outline-light:hover { border-color: rgba(255,255,255,.5); background: rgba(255,255,255,.06); transform: translateY(-2px); }
+
+    /* ── FOOTER ──────────────────────────────────── */
+    footer {
+      background: var(--primary-dark);
+      padding: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 24px;
+      border-top: 1px solid rgba(255,255,255,.06);
+    }
+    .footer-logo {
+      font-family: 'Playfair Display', serif;
+      color: var(--cream);
+      font-size: 1.1rem;
+    }
+    .footer-logo span { display: block; font-size: .75rem; font-family: 'DM Sans', sans-serif; color: var(--blue-light); font-weight: 300; margin-top: 2px; }
+    .footer-nav { display: flex; gap: 28px; }
+    .footer-nav a { font-size: .82rem; color: rgba(216,225,243,.5); text-decoration: none; transition: color .2s; }
+    .footer-nav a:hover { color: var(--cream); }
+    .footer-copy { font-size: .78rem; color: rgba(216,225,243,.3); }
+
+    /* ── RESPONSIVE ─────────────────────────────── */
+    @media (max-width: 900px) {
+      .hero { padding: 100px 24px 60px; text-align: center; max-width: 100%; }
+      .hero-btns { justify-content: center; }
+      .cards-grid { grid-template-columns: 1fr; gap: 16px; }
+      #sobre-mi { padding: 60px 24px; }
+      .modality-grid { grid-template-columns: 1fr; }
+      .consultas-inner { grid-template-columns: 1fr; gap: 48px; }
+      .faq-inner { grid-template-columns: 1fr; gap: 40px; }
+      #contacto { flex-direction: column; padding: 60px 24px; }
+      section { padding: 60px 24px; }
+      footer { padding: 36px 24px; flex-direction: column; align-items: flex-start; }
+    }
+
+    /* ── ANIMATIONS ─────────────────────────────── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .fade-up { animation: fadeUp .7s ease both; }
+    .fade-up-2 { animation: fadeUp .7s .15s ease both; }
+    .fade-up-3 { animation: fadeUp .7s .3s ease both; }
+    .fade-up-4 { animation: fadeUp .7s .45s ease both; }
+
+    /* floating whatsapp */
+    .wa-float {
+      position: fixed;
+      bottom: 32px; right: 32px;
+      width: 56px; height: 56px;
+      border-radius: 50%;
+      background: #25D366;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 20px rgba(37,211,102,.4);
+      z-index: 99;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .wa-float:hover { transform: scale(1.08); box-shadow: 0 8px 28px rgba(37,211,102,.5); }
+    .wa-float svg { width: 28px; height: 28px; }
+  </style>
+</head>
+<body>
+
+
+<!-- ── HERO ── -->
+<section class="hero" id="inicio">
+  <div class="hero-text">
+    <span class="hero-tag fade-up">Psicoanálisis · Buenos Aires</span>
+    <h1 class="fade-up-2">
+      Un espacio para<br/>
+      <em>explorar</em><br/>
+      lo que te habita.
+    </h1>
+    <p class="hero-desc fade-up-3">
+      Acompaño procesos de análisis personal donde el inconsciente tiene lugar. Un espacio de escucha para interrogar los patrones que se repiten, los vínculos que duelen y lo que no termina de decirse.
+    </p>
+    <div class="hero-btns fade-up-4">
+      <a href="#consultas" class="btn-primary">Hacer una consulta</a>
+      <a href="#sobre-mi" class="btn-secondary">Conocer más</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── SOBRE MÍ ── -->
+<section id="sobre-mi">
+  <div class="about-text">
+    <p class="section-label">Sobre mí</p>
+    <h2 class="section-title">Hola, soy <em>Delfina.</em></h2>
+    <p>
+      Soy Licenciada en Psicología (UBA), y trabajo desde una orientación psicoanalítica. Mi práctica está dirigida a jóvenes adultos y adultos que desean interrogar su malestar, comprender sus procesos internos y abrirse a la escucha de lo que el inconsciente tiene para decir.
+    </p>
+    <p>
+      El espacio analítico no es un lugar de soluciones rápidas, sino de elaboración genuina. Trabajamos con la palabra, con lo que se repite, con lo que aparece en los vínculos y con aquello que permanece oculto detrás de los síntomas.
+    </p>
+    <p>
+      Atiendo de manera <strong>virtual y presencial</strong> en Buenos Aires. Si tenés dudas antes de comenzar, podés escribirme sin compromiso.
+    </p>
+  </div>
+</section>
+
+<!-- ── ENFOQUE ── -->
+<section id="enfoque">
+  <div class="approach-header">
+    <p class="section-label">Mi forma de trabajar</p>
+    <h2 class="section-title">Un enfoque <em>analítico</em> y de escucha profunda</h2>
+    <p class="section-subtitle">Cada proceso es singular. El análisis abre un espacio para que emerja aquello que no puede decirse en otro lugar.</p>
+  </div>
+  <div class="cards-grid">
+    <div class="card">
+      <h3>Escucha</h3>
+      <p>Un espacio donde la palabra circula con libertad.</p>
+    </div>
+    <div class="card">
+      <h3>Patrones y repeticiones</h3>
+      <p>Lo que se repite en los vínculos, en las elecciones, en el sufrimiento, no es casual. El análisis trabaja sobre esas huellas para abrir nuevas posibilidades.</p>
+    </div>
+    <div class="card">
+      <h3>A tu ritmo</h3>
+      <p>No hay pasos predefinidos ni protocolos universales. El proceso se construye en función de la singularidad de cada consultante y su historia.</p>
+    </div>
+    <div class="card">
+      <h3>Vínculo transferencial</h3>
+      <p>La relación analítica es en sí misma parte del trabajo. Lo que se despliega en el vínculo con el analista dice algo fundamental del mundo interno de quien consulta.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── MODALIDADES ── -->
+<section id="modalidades">
+  <p class="section-label">Cómo trabajamos</p>
+  <h2 class="section-title">Modalidades de <em>atención</em></h2>
+  <p class="section-subtitle">Podés elegir la modalidad que mejor se adapte a tu situación y preferencias.</p>
+  <div class="modality-grid">
+    <div class="modality-card">
+      <h3>Sesiones online</h3>
+      <p>Atención por videollamada desde cualquier lugar. Flexible, cómoda y con la misma profundidad que una sesión presencial. Ideal si tenés poco tiempo, viajás o preferís la comodidad de tu espacio.</p>
+      <span class="modality-tag">Virtual · Zoom / Meet</span>
+    </div>
+    <div class="modality-card">
+      <h3>Sesiones presenciales</h3>
+      <p>Consultorio en Ituzaingó, en un espacio cálido y reservado, pensado para que te sientas seguro/a y contenido/a.</p>
+      <span class="modality-tag">Presencial · Buenos Aires — Ituzaingó</span>
+    </div>
+  </div>
+</section>
+
+<!-- ── CONSULTAS (FORM) ── -->
+<section id="consultas">
+  <div class="consultas-inner">
+    <div class="consultas-info">
+      <p class="section-label">Comenzar</p>
+      <h2 class="section-title">¿Querés <em>consultar?</em></h2>
+      <p class="section-subtitle">Completá el formulario y me pongo en contacto a la brevedad para coordinar una primera entrevista.</p>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-text">
+            <h4>Completá el formulario</h4>
+            <p>Contame brevemente qué te trae y qué modalidad preferís. Toda la información es confidencial.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-text">
+            <h4>Te contacto en 24-48 hs</h4>
+            <p>Me comunico por mail o WhatsApp para responder tus dudas y coordinar un primer encuentro.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-text">
+            <h4>Primera entrevista</h4>
+            <p>Un espacio sin compromiso para conocernos, entender qué necesitás y ver si podemos trabajar juntos/as.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="form-container">
+      <div class="form-header">
+        <h3>Formulario de consulta</h3>
+        <p>Todo lo que se trabaja en sesión se mantiene bajo estricta confidencialidad, conforme al Código de Ética Profesional del Colegio de Psicólogos de la Provincia de Buenos Aires.</p>
+      </div>
+      <iframe
+        src="https://docs.google.com/forms/d/e/1FAIpQLSeglopRz9Jymkr_3UcfREGhVLa8YF5nHLYN3ptN_qyU87WleQ/viewform?embedded=true"
+        height="900"
+        frameborder="0"
+        marginheight="0"
+        marginwidth="0"
+        title="Formulario de consulta - Lic. Delfina Hussen"
+      >Cargando…</iframe>
+    </div>
+  </div>
+</section>
+
+<!-- ── FAQ ── -->
+<section id="faq">
+  <div class="faq-inner">
+    <div>
+      <p class="section-label">Preguntas frecuentes</p>
+      <h2 class="section-title">¿Tenés <em>dudas?</em></h2>
+      <p class="section-subtitle">Algunas respuestas a las preguntas que suelen aparecer antes de comenzar.</p>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-question">
+          ¿Cómo sé si es el momento de ir a terapia?
+          <span class="arrow">+</span>
+        </button>
+        <div class="faq-answer">No hace falta estar en crisis para comenzar. Si sentís que algo te pesa, que ciertos patrones se repiten, o simplemente querés conocerte mejor, es un buen momento. No hay que esperar a tocar fondo.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">
+          ¿Cuánto dura cada sesión?
+          <span class="arrow">+</span>
+        </button>
+        <div class="faq-answer">Las sesiones duran aproximadamente 40 a 45 minutos. La frecuencia habitual es semanal, aunque esto puede adaptarse según el proceso de cada persona.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">
+          ¿Las sesiones online son igual de efectivas?
+          <span class="arrow">+</span>
+        </button>
+        <div class="faq-answer">Sí. La evidencia muestra que la psicoterapia online es igualmente efectiva que la presencial. Muchas personas la prefieren por la comodidad, la privacidad y la flexibilidad que ofrece.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">
+          ¿Todo lo que digo es confidencial?
+          <span class="arrow">+</span>
+        </button>
+        <div class="faq-answer">Todo lo que se trabaja en sesión se mantiene bajo estricta confidencialidad, conforme al Código de Ética Profesional del Colegio de Psicólogos de la Provincia de Buenos Aires: <a href="https://colegiodepsicologos.org.ar/wp-content/uploads/2018/06/codigo_etica_cppba.pdf" target="_blank" rel="noopener">ver código de ética</a>.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">
+          ¿Cómo es la primera entrevista?
+          <span class="arrow">+</span>
+        </button>
+        <div class="faq-answer">Es un espacio de conocimiento mutuo. Podés contarme qué te trae, hacerme preguntas y ver si te sentís cómodo/a. No hay ningún compromiso. El objetivo es que podamos evaluar juntos si hay condiciones para comenzar un proceso.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CONTACT STRIP ── -->
+<div id="contacto">
+  <div class="contact-text">
+    <h2>¿Listo/a para dar el primer paso?</h2>
+    <p>Escribime sin compromiso. Estoy para acompañarte en lo que necesités.</p>
+  </div>
+  <div class="contact-actions">
+    <a href="#consultas" class="btn-light">Completar formulario</a>
+    <a href="https://wa.me/5491165807037" target="_blank" rel="noopener" class="btn-outline-light">WhatsApp</a>
+  </div>
+</div>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-logo">
+    Lic. Delfina Hussen
+  </div>
+  <nav class="footer-nav">
+    <a href="#sobre-mi">Sobre mí</a>
+    <a href="#enfoque">Enfoque</a>
+    <a href="#modalidades">Modalidades</a>
+    <a href="#consultas">Consultas</a>
+  </nav>
+  <span class="footer-copy">© 2025 · Todos los derechos reservados</span>
+</footer>
+
+<!-- ── WHATSAPP FLOAT ── -->
+<a href="https://wa.me/5491165807037" target="_blank" rel="noopener" class="wa-float" aria-label="WhatsApp">
+  <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M16 2.5C8.544 2.5 2.5 8.544 2.5 16c0 2.38.627 4.61 1.72 6.543L2.5 29.5l7.183-1.69A13.454 13.454 0 0016 29.5c7.456 0 13.5-6.044 13.5-13.5S23.456 2.5 16 2.5z" fill="white"/>
+    <path d="M22.7 19.7c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.27-.47-2.41-1.49-.89-.79-1.49-1.77-1.67-2.07-.17-.3-.02-.46.13-.61.14-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51-.17-.01-.37-.01-.57-.01s-.52.07-.79.37c-.27.3-1.04 1.01-1.04 2.47 0 1.46 1.06 2.87 1.21 3.07.15.2 2.09 3.19 5.06 4.47.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.35z" fill="#25D366"/>
+  </svg>
+</a>
+
+<script>
+  // FAQ accordion
+  document.querySelectorAll('.faq-item').forEach(item => {
+    const btn = item.querySelector('.faq-question');
+    const arrow = item.querySelector('.arrow');
+    btn.addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => {
+        i.classList.remove('open');
+        i.querySelector('.arrow').textContent = '+';
+      });
+      if (!isOpen) {
+        item.classList.add('open');
+        arrow.textContent = '−';
+      }
+    });
+  });
+
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.card, .modality-card, .step').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity .6s ease, transform .6s ease';
+    observer.observe(el);
+  });
+</script>
+</body>
+</html>
